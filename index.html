@@ -10,10 +10,10 @@
   <div class="login-container">
     <h1>ICT Inventory</h1>
     <form id="loginForm" action="/login" method="POST">
-      <span for="un">Username</span>
+      <label for="un">Username</label>
       <input type="text" id="un" name="un" required>
       
-      <span for="pw">Password</span>
+      <label for="pw">Password</label>
       <input type="password" id="pw" name="pw" required>
 
       <p class="error" id="errorMsg" style="display: none;">Invalid username or password</p>
@@ -26,11 +26,11 @@
   document.getElementById('loginForm').addEventListener('submit', function(event) {
     event.preventDefault();
     
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
+    const username = document.getElementById('un').value; // Corrected to 'un'
+    const password = document.getElementById('pw').value; // Corrected to 'pw'
 
     if (username === 'ceumls' && password === 'ict2024') {
-      window.location.href = 'upd/index.html';
+      window.location.href = 'upd/index.html'; // Ensure this path is correct
     } else {
       document.getElementById('errorMsg').style.display = 'block';
     }
