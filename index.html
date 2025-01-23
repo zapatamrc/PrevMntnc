@@ -8,15 +8,41 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 
+<header id="title">Preventive Maintenance</header>
 <body>
-    <h1 id="title">Preventive Maintenance</h1>
+    
     <div class="inputBox">
         <span>Department:</span>
-        <input type="text" required="required">
+        <select required>
+            <option value="" disabled selected>Select an option</option>
+            <option value="CAMT">CAMT</option>
+            <option value="CELAS">CELAS</option>
+            <option value="CHM">CHM</option>
+            <option value="Dentistry Department">Dentistry Department</option>
+            <option value="Medical Technology Department">Medical Technology Department</option>
+            <option value="Nursing Department">Nursing Department</option>
+            <option value="Optometry Department">Optometry Department</option>
+            <option value="Pharmacy Department">Pharmacy Department</option>
+            <option value="Cashier">Cashier</option>
+            <option value="Guidance">Guidance</option>
+            <option value="ICT">ICT</option>
+            <option value="Library">Library</option>
+            <option value="Registrar">Registrar</option>
+            <option value="Student Affairs Unit">Student Affairs Unit</option>
+            <option value="VP's Office">VP's Office</option>
+        </select>
     </div>
     <div class="inputBox">
         <span>Date:</span>
         <input type="date" required="required">
+    </div>
+    <div class="inputBox">
+        <span>Remarks:</span>
+        <input type="text">
+    </div>
+    <div class="inputBox">
+        <span>Cost:</span>
+        <input type="text">
     </div>
     <div class="inputBox">
         <span>Attested by:</span>
