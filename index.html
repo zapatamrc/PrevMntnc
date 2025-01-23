@@ -3,27 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home</title>
-  <link rel="stylesheet" href="styles.css">
-
-
   <title>ICT Login</title>
-  <style>
-    
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="login-container">
     <h1>ICT Inventory</h1>
-    <form action="/login" method="POST">
+    <form id="loginForm" action="/login" method="POST">
       <label for="username">Username</label>
       <input type="text" id="username" name="username" required>
       
       <label for="password">Password</label>
       <input type="password" id="password" name="password" required>
+
+      <p class="error" id="errorMsg" style="display: none;">Invalid username or password</p>
       
       <button type="submit">Log In</button>
     </form>
   </div>
 </body>
+<script>
+  document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    if (username === 'ceumls' && password === 'ict2024') {
+      window.location.href = 'update.html';
+    } else {
+      document.getElementById('errorMsg').style.display = 'block';
+    }
+  });
+</script>
 </html>
