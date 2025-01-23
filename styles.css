@@ -45,3 +45,8 @@ body {
   .login-container button:hover {
     background-color: #0056b3;
   }
+
+  footer{
+    position: absolute;
+    bottom: 3%;
+}
