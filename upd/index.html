@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prvntv Mntnnc</title>
+    <title>Equipment Repair/Service Card</title>
     <link rel="stylesheet" href="upd.css">
 </head>
 
-<header id="title">Preventive Maintenance Update</header>
+<header id="title">Equipment Repair/Service Card</header>
 <body>
     
     <div class="inputBox">
@@ -38,12 +38,37 @@
         </select>
     </div>
     <div class="inputBox">
+        <span>Equipment:</span>
+            <select required>
+                <option value="" disabled selected>Select an option</option>
+                <option value="Computer">Computer</option>
+                <option value="Printer">Printer</option>
+            </select>
+    </div>
+    <div class="inputBox">
+        <span>Equipment Number:</span>
+        <select required>
+            <option value="" disabled selected>Select an option</option>
+            <option value="C01-01">C01-01</option>
+            <option value="C01-02">C01-02</option>
+        </select>
+    </div>
+    <div class="inputBox">
         <span>Date:</span>
         <input type="date" required="required">
     </div>
     <div class="inputBox">
         <span>Remarks:</span>
         <input type="text">
+    </div>
+    <div class="inputBox">
+        <span>Preventive Maintenance:</span>
+        <label>
+            <input type="radio" name="preventiveMaintenance" value="yes"> Yes
+        </label>
+        <label>
+            <input type="radio" name="preventiveMaintenance" value="no"> No
+        </label>
     </div>
     <div class="inputBox">
         <span>Cost:</span>
