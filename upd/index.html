@@ -6,13 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Equipment Repair/Service Card</title>
     <link rel="stylesheet" href="upd.css">
+        <script>
+            $(document).ready(function () {
+                $('#department').change(function () {
+                    const departmentId = $(this).val();
+
+                    // Clear previous options
+                    $('#equipment').empty().append('<option value="" disabled selected>Select an option</option>');
+                    $('#equipmentNumber').empty().append('<option value="" disabled selected>Select an option</option>');
+
+                    // Fetch equipment based on selected department
+                    $.getJSON('get_equipment.php', { department_id: departmentId }, function (data) {
+                        const equipmentTypes = [...new Set(data.map(item => item.type))];
+                        equipmentTypes.forEach(type => {
+                            $('#equipment').append(`<option value="${type}">${type}</option>`);
+                        });
+
+                        // Handle equipment selection
+                        $('#equipment').change(function () {
+                            const selectedType = $(this).val();
+                            $('#equipmentNumber').empty().append('<option value="" disabled selected>Select an option</option>');
+                            data.filter(item => item.type === selectedType).forEach(item => {
+                                $('#equipmentNumber').append(`<option value="${item.equipment_number}">${item.equipment_number}</option>`);
+                            });
+                        });
+                    });
+                });
+            });
+        </script>
 </head>
 
 <header id="title">Equipment Repair/Service Card</header>
 <body>
     
     <div class="inputBox">
-        <span>Department:</span>
+        <span>Department/Office:</span>
         <select required>
             <option value="" disabled selected>Select an option</option>
             <option value="CAMT">CAMT</option>
