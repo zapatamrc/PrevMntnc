@@ -2,7 +2,6 @@
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // Corrected `mysqli` spelling
     $conn = new mysqli("localhost", "root", "", "ict");
 
     if ($conn->connect_error) {
