@@ -1,23 +1,32 @@
 <?php 
-    $username = filter_input(INPUT_POST, 'username');
-    $password = filter_input(INPUT_POST, 'password');
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
-    if(!empty($username)){
-        if(!empty($password)){
-            $host="localhost";
-            $dbusername="root";
-            $dbpassword="";
-            $dbname="ict";
+    // Corrected `mysqli` spelling
+    $conn = new mysqli("localhost", "root", "", "ict");
 
-            $conn = new msqli($host,$dbusername,$dbpassword,$dbname);
-            if(mysqli_connect_error()){
-                die('Connect error ('.mysqli_connect_errno().')'.mysqli_connect_error());
-            }else{
-                $sql = 
+    if ($conn->connect_error) {
+        die('Failed to connect: ' . $conn->connect_error);
+    } else {
+        $stmt = $conn->prepare("SELECT * FROM ictuser WHERE username=?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $stmt_result = $stmt->get_result();
+
+        if ($stmt_result->num_rows > 0) {
+            $data = $stmt_result->fetch_assoc();
+
+            if (password_verify($password, $data['password'])) {
+                echo "<h2>Login Successful</h2>";
+            } else {
+                echo "<h2>Invalid Username or Password</h2>";
             }
+        } else {
+            echo "<h2>Invalid Username or Password</h2>";
         }
-    }else{
-        echo "User should not be empty";
-        die();
+
+        // Close statement and connection
+        $stmt->close();
+        $conn->close();
     }
 ?>
